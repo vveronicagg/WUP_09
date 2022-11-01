@@ -23,7 +23,18 @@ require(tidyverse)
 
 ## Perch
 
+```{r}
+fish <- read.csv("Fish.csv")
+Perch <- filter(fish, Species=="Perch")
+Perch <- select (Perch,-Species)
+```
+
+
+
 ### Best Models
+
+
+
 
 ### Best Two regressor model
 
