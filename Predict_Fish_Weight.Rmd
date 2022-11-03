@@ -66,7 +66,7 @@ pmodel <- lm (Weight~ Height + Width + Length1 + Length2+ Length3, data= Perch)
 summary.lm(pmodel)
 ```
 
-After comparing the three regression model with the two regressions model the summaries state that the two regression models have a lower residual standard error and a much higher adjusted R squared value.Stating that the best regression model is the one above.
+After comparing the three regression model with the two regressions model the summaries state that the two regression models have a lower residual standard error and a much higher adjusted R squared value.Stating that the best regression model is the one above. 
 ## bream
 
 ```{r}
@@ -94,6 +94,12 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
 ```
 
+The best two regression model in this chart is length 2 and the height that is higher up. The best three regression model is length one width and height. But the best regression model is definitely three. 
+
+```{r}
+Breammodel <- lm (Weight~ Height + Width, data= Bream)
+summary.lm(Breammodel)
+```
 
 
 ## Roach
