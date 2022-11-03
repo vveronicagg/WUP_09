@@ -54,7 +54,7 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="topright",main="Adjusted R^2")
 ```
 
-The best regressive model are the height and the weight because of how their adjusted R2 is closr to 1  (0.9400)
+The best regressive model are the height and the weight because of how their adjusted R2 is closr to 1  (0.9400). 
 
 ```{r}
 perchmodel <- lm (Weight~ Height + Width, data= Perch)
@@ -69,9 +69,32 @@ summary.lm(pmodel)
 After comparing the three regression model with the two regressions model the summaries state that the two regression models have a lower residual standard error and a much higher adjusted R squared value.Stating that the best regression model is the one above.
 ## bream
 
+```{r}
+fish <- read.csv("Fish.csv")
+Bream <- filter(fish, Species=="Bream")
+Bream <- select (Bream,-Species)
+```
+
 ### Best Models
 
 ### Best Two regressor model
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Bream,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
+
 
 ## Roach
 
