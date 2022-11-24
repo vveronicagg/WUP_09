@@ -78,7 +78,7 @@ After comparing the three regression model with the two regressions model the su
 
 ```{r}
 fish <- read.csv("Fish.csv")
-Bream <- filter(fish, Species=="Bream")
+Bream <- filter(fish, Species=="Perch")
 Bream <- select (Bream,-Species)
 ```
 
