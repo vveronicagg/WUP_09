@@ -29,10 +29,16 @@ Perch <- filter(fish, Species=="Perch")
 Perch <- select (Perch,-Species)
 ```
 
+```{r}
+basicCN <- ggplot(Perch,aes(x=Weight,y=Length3))
+
+basicCN + geom_point()+ geom_lm()
+```
+
+
 
 
 ### Best Models
-
 
 
 
@@ -67,6 +73,7 @@ summary.lm(pmodel)
 ```
 
 After comparing the three regression model with the two regressions model the summaries state that the two regression models have a lower residual standard error and a much higher adjusted R squared value.Stating that the best regression model is the one above. 
+
 ## bream
 
 ```{r}
@@ -101,6 +108,10 @@ Breammodel <- lm (Weight~ Height + Width, data= Bream)
 summary.lm(Breammodel)
 ```
 
+```{r}
+pmodel <- lm (Weight~ Height + Width + Length1 + Length2+ Length3, data= Bream)
+summary.lm(pmodel)
+```
 
 ## Roach
 
@@ -128,12 +139,36 @@ regsubsets.out <-
 summary.out <- summary(regsubsets.out)
 as.data.frame(summary.out$outmat)
 library(car)
-subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+subsets(regsubsets.out,statistic="adjr2",legend="topright",main="Adjusted R^2")
+```
+Our best one is the the length three width because the adjusted r2 is the highest compared to the others above. Because its the most closer to one 
+
+
+
+
+```{r}
+Roachmodel <- lm (Weight~ Height + Width, data= Roach)
+summary.lm(Roachmodel)
+```
+
+```{r}
+pmodel <- lm (Weight~ Width + Length3, data= Roach)
+summary.lm(pmodel)
 ```
 
 
+```{r}
+favstats(Length1~ Weight,data=Perch)
+```
 
-
-
+```{r}
+basicNN <- ggplot(Perch,aes(y=Weight,x=Length3))
+basicNN + geom_point()+ geom_lm()
+```
 
 ## Final Summary Statements
+
+
+
+
+
