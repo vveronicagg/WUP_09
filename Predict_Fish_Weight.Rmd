@@ -141,15 +141,9 @@ as.data.frame(summary.out$outmat)
 library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="topright",main="Adjusted R^2")
 ```
-Our best one is the the length three width because the adjusted r2 is the highest compared to the others above. Because its the most closer to one 
+Our best one is the the length three width because the adjusted r2 is the highest compared to the others above. Because its the most closer to one. 
 
 
-
-
-```{r}
-Roachmodel <- lm (Weight~ Height + Width, data= Roach)
-summary.lm(Roachmodel)
-```
 
 ```{r}
 pmodel <- lm (Weight~ Width + Length3, data= Roach)
@@ -168,6 +162,7 @@ basicNN + geom_point()+ geom_lm()
 
 ## Final Summary Statements
 
+The fish species bream has a mean weight of 617.8 which is 1.6x big like the perch. It being 382.2 the Roach has a mean weight of two times as small of 152.0 as the perch. Being half as big as the perch species. Bream is the most heaviest fish twice as heavy as the perch. 0.94 perch adjusted r2 standard deviation is higher than the other fishes (347.61). There is a 0.93 bream adjusted r2 of standard deviation lower than the perch 347.6 but still having a higher number then the roach. Perch has a residual standard error of 85.17 indicating that the data is not as close as the bream as the residual standard is 53.1. The r2 and the low residual standard shows the accuracy of the bream.
 
 
 
